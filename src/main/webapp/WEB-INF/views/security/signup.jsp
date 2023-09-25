@@ -12,9 +12,7 @@
 		<i class="fa-solid fa-user-plus"></i> 회원가입
 	</h1>
 	<div>
-		<form:form modelAttribute="member">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+		<form:form modelAttribute="member" action="/security/signup?_csrf=${_csrf.token}" enctype="multipart/form-data">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<form role="form" method="post">
@@ -43,17 +41,9 @@
 							<form:errors path="email" cssclass="errors" />
 						</div>
 
-						<form action="/sample/exUploadPost" method="post"
-							enctype="multiPART/form-data">
-
-							<div>
-								<input type="file" name="files" multiple="multiple" />
+						
+								<input type="file" name="avatar"/>
 								<!-- multiple 추가하면 여러개 파일 선택 가능 -->
-							</div>
-							<div>
-								<input type="submit" />
-							</div>
-						</form>
 
 						<div class="text-center">
 							<button type="submit" class="btn btn-primary">

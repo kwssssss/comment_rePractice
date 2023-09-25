@@ -20,11 +20,13 @@
 		<!-- 우측 메뉴 -->
 		<ul class="navbar-nav ml-auto">
 			<sec:authorize access="isAuthenticated()">
+			
+				<sec:authentication property="principal.username" var="username"/> <!-- 출력하지 않고 출력할 내용을 var 이름으로 scope 저장 -->
 				<!-- 로그인 상태 -->
 					<li class="nav-item">
-						<a class="nav-link" href="#"> 
-							<img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar-sm" /> 
-							<sec:authentication property="principal.username" />
+						<a class="nav-link" href="/security/profile"> 
+							<img src="/security/avatar/sm/${username}" class="avatar-sm" /> 
+							${username}"<%-- <sec:authentication property="principal.username" /> --%>
 						</a>
 					</li>
 					

@@ -26,4 +26,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on m.username= a.username
 		where m.username = #{username};
 	</select>
+	
+	<insert id="insert">
+		insert into tbl_member(username, password, email)
+		values(#{username}, #{password}, #{email})		
+	</insert>
+	
+	<insert id="insertAuth"> <!-- foreign key 제약조건 멤버 위배가 되어서 member 먼저 등록 후 auth 등록 해야함, #{username}값이 빈값이 되기 때문이라는 뜻--> 
+		insert into tbl_member_auth(username, auth)
+		values(#{username}, #{auth})		
+	</insert>
 </mapper>

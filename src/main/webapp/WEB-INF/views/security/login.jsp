@@ -10,6 +10,11 @@
 		사용자 ID 또는 비밀번호가 일치하지 않습니다.
 	</div>
 </c:if>
+<c:if test="${param.error == 'login_required' }">
+	<div class="error">
+		로그인이 필요합니다.
+	</div>
+</c:if>
 
 <form action="/security/login" method="post">
 
