@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.galapagos</groupId>
 	<artifactId>controller</artifactId>
-	<name>starter-security</name>
+	<name>ex05_practice</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
