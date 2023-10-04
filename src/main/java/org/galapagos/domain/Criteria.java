@@ -1,5 +1,7 @@
 package org.galapagos.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,8 +34,30 @@ public class Criteria {
 	}
 	
 	public String[] getTypeArr() {
-		return type == null ? new String[] {} : type.split("");
+		return type == null ? new String[] {} : //빈 배열 리턴
+			type.split(""); // 한글자 단위로 분리된 배열 리턴
 	}
 	
+	public String getLink(String base, int pageNum) {
+		UriComponentsBuilder builder =
+				UriComponentsBuilder.fromPath(base)
+				.queryParam("pageNum", pageNum)
+				.queryParam("amount", amount)
+				.queryParam("type", type)
+				.queryParam("keyword", keyword);
+		return builder.toUriString();
+	}
+	
+	public String getLink() {
+		return getLink("", pageNum);
+	}
+	
+	public String getLink(String base) {
+		return getLink(base, pageNum);
+	}
+	
+	public String getLinkWithBno(String base, Long bno) {
+		return getLink(base, pageNum) + "&bno=" + bno;
+	}
 	
 }
